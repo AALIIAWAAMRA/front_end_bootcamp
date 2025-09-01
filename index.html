@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description"
+      content="Join Nidhal Lahcen's 12-day Front-end Development Bootcamp by Binary Castle. Learn HTML, CSS, and JavaScript with hands-on projects and earn a certificate.">
+   <meta name="keywords"
+      content="frontend bootcamp, web development, HTML, CSS, JavaScript, Binary Castle, Nidhal Lahcen">
+   <meta name="author" content="Binary Castle">
+
+   <!-- Open Graph Meta Tags -->
+   <meta property="og:title" content="Frontend Bootcamp - Binary Castle">
+   <meta property="og:description"
+      content="Master frontend development in 12 days with expert instruction from Nidhal Lahcen">
+   <meta property="og:image" content="assets/img/binary_castle.png">
+   <meta property="og:url" content="https://your-site.example">
+   <meta property="og:type" content="website">
+
+   <!-- Twitter Card Meta Tags -->
+   <meta name="twitter:card" content="summary_large_image">
+   <meta name="twitter:title" content="Frontend Bootcamp - Binary Castle">
+   <meta name="twitter:description"
+      content="Master frontend development in 12 days with expert instruction from Nidhal Lahcen">
+   <meta name="twitter:image" content="assets/img/binary_castle.png">
+
+   <title>Frontend Bootcamp - Binary Castle | Learn HTML, CSS & JavaScript</title>
+
+   <!-- Favicon -->
+   <link rel="icon" type="image/png" href="assets/img/binary_castle.png">
+
+   <!-- Styles -->
+   <link rel="stylesheet" href="assets/css/styles.css">
+
+   <!-- Alpine.js -->
+   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body>
+   <!-- Navigation -->
+   <nav class="navbar" x-data="{ mobileMenuOpen: false }" role="navigation" aria-label="Main navigation">
+      <div class="container">
+         <div class="nav-brand">
+            <img src="assets/img/binary_castle.png" alt="Binary Castle Logo" width="50" height="50" class="logo">
+            <span class="brand-text">Frontend Bootcamp</span>
+         </div>
+
+         <!-- Mobile menu button -->
+         <button class="mobile-menu-btn" @click="mobileMenuOpen = !mobileMenuOpen" :aria-expanded="mobileMenuOpen"
+            aria-controls="mobile-menu" aria-label="Toggle mobile menu">
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+            <span class="hamburger"></span>
+         </button>
+
+         <!-- Navigation Links -->
+         <div class="nav-links" :class="{ 'nav-links--open': mobileMenuOpen }" id="mobile-menu">
+            <a href="#about" @click="mobileMenuOpen = false">About</a>
+            <a href="#curriculum" @click="mobileMenuOpen = false">Curriculum</a>
+            <a href="#pricing" @click="mobileMenuOpen = false">Pricing</a>
+            <a href="#instructor" @click="mobileMenuOpen = false">Instructor</a>
+            <a href="#contact" @click="mobileMenuOpen = false">Contact</a>
+            <a href="#register" class="btn btn-primary" @click="mobileMenuOpen = false">Register Now</a>
+         </div>
+      </div>
+   </nav>
+
+   <!-- Hero Section -->
+   <section class="hero" id="hero">
+      <div class="container">
+         <div class="hero-content">
+            <h1 class="hero-title">Master Frontend Development in 12 Days</h1>
+            <p class="hero-subtitle">Learn HTML, CSS, and JavaScript from industry expert Nidhal Lahcen. Build real
+               projects, earn a certificate, and kickstart your web development career.</p>
+            <div class="hero-cta">
+               <a href="#register" class="btn btn-primary btn-large">Register Now</a>
+               <a href="#curriculum" class="btn btn-secondary">View Curriculum</a>
+            </div>
+            <div class="hero-stats">
+               <div class="stat">
+                  <span class="stat-number">12</span>
+                  <span class="stat-label">Days</span>
+               </div>
+               <div class="stat">
+                  <span class="stat-number">3</span>
+                  <span class="stat-label">Technologies</span>
+               </div>
+               <div class="stat">
+                  <span class="stat-number">5+</span>
+                  <span class="stat-label">Projects</span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- About Section -->
+   <section class="about" id="about">
+      <div class="container">
+         <h2 class="section-title">Why Join Our Bootcamp?</h2>
+         <div class="benefits-grid">
+            <div class="benefit-card">
+               <div class="benefit-icon">🎯</div>
+               <h3>Practical Learning</h3>
+               <p>Build real-world projects that you can showcase in your portfolio</p>
+            </div>
+            <div class="benefit-card">
+               <div class="benefit-icon">🏆</div>
+               <h3>Industry Certificate</h3>
+               <p>Receive a professional certificate upon successful completion</p>
+            </div>
+            <div class="benefit-card">
+               <div class="benefit-icon">👨‍💻</div>
+               <h3>Expert Instruction</h3>
+               <p>Learn from Nidhal Lahcen, a seasoned frontend developer</p>
+            </div>
+            <div class="benefit-card">
+               <div class="benefit-icon">🚀</div>
+               <h3>Career Ready</h3>
+               <p>Graduate with the skills needed for entry-level frontend positions</p>
+            </div>
+            <div class="benefit-card">
+               <div class="benefit-icon">🤝</div>
+               <h3>Community Support</h3>
+               <p>Join a network of aspiring developers and get ongoing support</p>
+            </div>
+            <div class="benefit-card">
+               <div class="benefit-icon">💼</div>
+               <h3>GitHub Portfolio</h3>
+               <p>Build an impressive GitHub portfolio with your bootcamp projects</p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- Curriculum Section -->
+   <section class="curriculum" id="curriculum">
+      <div class="container">
+         <h2 class="section-title">12-Day Curriculum</h2>
+         <p class="section-subtitle">A comprehensive journey from HTML basics to JavaScript mastery</p>
+
+         <div class="curriculum-container" x-data="curriculumData()">
+            <!-- HTML Days -->
+            <div class="curriculum-block">
+               <h3 class="curriculum-block-title">HTML Fundamentals (Days 1-3)</h3>
+               <div class="curriculum-days">
+                  <template x-for="day in htmlDays" :key="day.id">
+                     <div class="curriculum-day">
+                        <button class="day-header" @click="toggleDay(day.id)" :aria-expanded="day.expanded"
+                           :aria-controls="`day-content-${day.id}`">
+                           <span x-text="`Day ${day.day}: ${day.title}`"></span>
+                           <span class="toggle-icon" :class="{ 'rotated': day.expanded }">▼</span>
+                        </button>
+                        <div class="day-content" :id="`day-content-${day.id}`" x-show="day.expanded" x-transition
+                           :aria-hidden="!day.expanded">
+                           <ul>
+                              <template x-for="topic in day.topics">
+                                 <li x-text="topic"></li>
+                              </template>
+                           </ul>
+                           <p class="day-project"><strong>Project:</strong> <span x-text="day.project"></span></p>
+                        </div>
+                     </div>
+                  </template>
+               </div>
+            </div>
+
+            <!-- CSS Days -->
+            <div class="curriculum-block">
+               <h3 class="curriculum-block-title">CSS Styling (Days 4-7)</h3>
+               <div class="curriculum-days">
+                  <template x-for="day in cssDays" :key="day.id">
+                     <div class="curriculum-day">
+                        <button class="day-header" @click="toggleDay(day.id)" :aria-expanded="day.expanded"
+                           :aria-controls="`day-content-${day.id}`">
+                           <span x-text="`Day ${day.day}: ${day.title}`"></span>
+                           <span class="toggle-icon" :class="{ 'rotated': day.expanded }">▼</span>
+                        </button>
+                        <div class="day-content" :id="`day-content-${day.id}`" x-show="day.expanded" x-transition
+                           :aria-hidden="!day.expanded">
+                           <ul>
+                              <template x-for="topic in day.topics">
+                                 <li x-text="topic"></li>
+                              </template>
+                           </ul>
+                           <p class="day-project"><strong>Project:</strong> <span x-text="day.project"></span></p>
+                        </div>
+                     </div>
+                  </template>
+               </div>
+            </div>
+
+            <!-- JavaScript Days -->
+            <div class="curriculum-block">
+               <h3 class="curriculum-block-title">JavaScript Programming (Days 8-12)</h3>
+               <div class="curriculum-days">
+                  <template x-for="day in jsDays" :key="day.id">
+                     <div class="curriculum-day">
+                        <button class="day-header" @click="toggleDay(day.id)" :aria-expanded="day.expanded"
+                           :aria-controls="`day-content-${day.id}`">
+                           <span x-text="`Day ${day.day}: ${day.title}`"></span>
+                           <span class="toggle-icon" :class="{ 'rotated': day.expanded }">▼</span>
+                        </button>
+                        <div class="day-content" :id="`day-content-${day.id}`" x-show="day.expanded" x-transition
+                           :aria-hidden="!day.expanded">
+                           <ul>
+                              <template x-for="topic in day.topics">
+                                 <li x-text="topic"></li>
+                              </template>
+                           </ul>
+                           <p class="day-project"><strong>Project:</strong> <span x-text="day.project"></span></p>
+                        </div>
+                     </div>
+                  </template>
+               </div>
+            </div>
+
+            <div class="curriculum-cta">
+               <button class="btn btn-outline" @click="showSyllabusModal = true" aria-label="View detailed syllabus">
+                  View Detailed Syllabus
+               </button>
+            </div>
+
+            <!-- Syllabus Modal -->
+            <div class="modal-overlay" x-show="showSyllabusModal" @click="showSyllabusModal = false" x-transition
+               role="dialog" aria-modal="true" aria-labelledby="syllabus-modal-title">
+               <div class="modal-content" @click.stop>
+                  <div class="modal-header">
+                     <h3 id="syllabus-modal-title">Complete Course Syllabus</h3>
+                     <button class="modal-close" @click="showSyllabusModal = false" aria-label="Close modal">×</button>
+                  </div>
+                  <div class="modal-body">
+                     <p><strong>Duration:</strong> 12 days intensive training</p>
+                     <p><strong>Format:</strong> Hands-on workshops with real projects</p>
+                     <p><strong>Prerequisites:</strong> Basic computer skills, passion for learning</p>
+                     <p><strong>Tools Provided:</strong> Code editor setup, development environment, project templates
+                     </p>
+                     <p><strong>Certification:</strong> Industry-recognized certificate upon completion</p>
+                     <p><strong>Post-Bootcamp:</strong> GitHub portfolio review and career guidance session</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- Pricing Section -->
+   <section class="pricing" id="pricing">
+      <div class="container">
+         <h2 class="section-title">Choose Your Plan</h2>
+         <div class="pricing-container" x-data="pricingData()">
+            <div class="pricing-toggle">
+               <button class="toggle-btn" :class="{ 'active': currentPlan === 'individual' }"
+                  @click="currentPlan = 'individual'">Individual</button>
+               <button class="toggle-btn" :class="{ 'active': currentPlan === 'student' }"
+                  @click="currentPlan = 'student'">Student</button>
+               <button class="toggle-btn" :class="{ 'active': currentPlan === 'group' }"
+                  @click="currentPlan = 'group'">Group</button>
+            </div>
+
+            <div class="pricing-card">
+               <div class="pricing-header">
+                  <h3 x-text="plans[currentPlan].name"></h3>
+                  <div class="price">
+                     <span class="currency">دج</span>
+                     <span class="amount" x-text="plans[currentPlan].price"></span>
+                     <span class="period" x-text="plans[currentPlan].period"></span>
+                  </div>
+               </div>
+               <div class="pricing-features">
+                  <template x-for="feature in plans[currentPlan].features">
+                     <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        <span x-text="feature"></span>
+                     </div>
+                  </template>
+               </div>
+               <div class="pricing-requirements" x-show="plans[currentPlan].requirements">
+                  <p class="requirements-title">Requirements:</p>
+                  <p class="requirements-text" x-text="plans[currentPlan].requirements"></p>
+               </div>
+               <a href="#register" class="btn btn-primary btn-full">Register Now</a>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- Instructor Section -->
+   <section class="instructor" id="instructor">
+      <div class="container">
+         <h2 class="section-title">Meet Your Instructor</h2>
+         <div class="instructor-card" x-data="{ showInstructorModal: false }">
+            <div class="instructor-image">
+               <img src="assets/img/nidhal.png" alt="Nidhal Lahcen - Frontend Developer" width="250" 
+                  loading="lazy">
+            </div>
+            <div class="instructor-info">
+               <h3 class="instructor-name">Nidhal Lahcen</h3>
+               <p class="instructor-title">Web devloper at codveda</p>
+               <p class="instructor-bio">Passionate frontend developer with extensive experience in modern web
+                  technologies. Nidhal has mentored dozens of developers and specializes in creating engaging,
+                  accessible web experiences.</p>
+               <div class="instructor-socials">
+                  <a href="https://www.linkedin.com/in/nidhal-lahcen-8ba0a6296/" aria-label="LinkedIn Profile">
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                           d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                     </svg>
+                  </a>
+                  <a href="https://github.com/AALIIAWAAMRA" aria-label="GitHub Profile">
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                           d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                     </svg>
+                  </a>
+               </div>
+               <button class="btn btn-outline" @click="showInstructorModal = true" aria-label="View instructor details">
+                  View Full Profile
+               </button>
+            </div>
+
+            <!-- Instructor Modal -->
+            <div class="modal-overlay" x-show="showInstructorModal" @click="showInstructorModal = false" x-transition
+               role="dialog" aria-modal="true" aria-labelledby="instructor-modal-title">
+               <div class="modal-content" @click.stop>
+                  <div class="modal-header">
+                     <h3 id="instructor-modal-title">Nidhal Lahcen - Instructor Profile</h3>
+                     <button class="modal-close" @click="showInstructorModal = false"
+                        aria-label="Close modal">×</button>
+                  </div>
+                  <div class="modal-body">
+                     <div class="instructor-profile">
+                        <img src="assets/img/nidhal.png" alt="Nidhal Lahcen" width="150" height="150">
+                        <div class="profile-details">
+                           <h4>Experience & Expertise</h4>
+                           <p>Nidhal brings years of professional frontend development experience, having worked on
+                              numerous web applications and digital platforms. His expertise spans modern JavaScript
+                              frameworks, responsive design, and user experience optimization.</p>
+
+                           <h4>Teaching Philosophy</h4>
+                           <p>Believes in learning by doing. Nidhal's approach combines theoretical understanding with
+                              practical application, ensuring students can immediately apply what they learn in
+                              real-world scenarios.</p>
+
+                           <h4>Achievements</h4>
+                           <ul>
+                              <li>Mentored 50+ junior developers</li>
+                              <li>Built scalable web applications for enterprises</li>
+                              <li>Active contributor to open-source projects</li>
+                              <li>Speaker at local tech meetups</li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- Contact & Registration Section -->
+   <section class="contact" id="contact">
+      <div class="container">
+         <div class="contact-grid">
+            <div class="contact-info">
+               <h2>Ready to Start Your Journey?</h2>
+               <p>Join our intensive 12-day bootcamp and transform your career in frontend development.</p>
+
+               <div class="contact-details">
+                  <div class="contact-item">
+                     <strong>Duration:</strong> 12 days intensive
+                  </div>
+                  <div class="contact-item">
+                     <strong>Schedule:</strong> Weekdays 9:00 AM - 5:00 PM
+                  </div>
+                  <div class="contact-item">
+                     <strong>Location:</strong> Binary Castle Training Center
+                  </div>
+                  <div class="contact-item">
+                     <strong>Next Cohort:</strong> Starting October 15, 2025
+                  </div>
+               </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="registration-form" id="register">
+               <h3>Register Now</h3>
+               <form x-data="registrationForm()" @submit.prevent="submitForm">
+                  <div class="form-group">
+                     <label for="fullName">Full Name *</label>
+                     <input type="text" id="fullName" x-model="form.fullName" :class="{ 'error': errors.fullName }"
+                        required aria-describedby="fullName-error">
+                     <span class="error-message" x-show="errors.fullName" x-text="errors.fullName"
+                        id="fullName-error"></span>
+                  </div>
+
+                  <div class="form-group">
+                     <label for="email">Email Address *</label>
+                     <input type="email" id="email" x-model="form.email" :class="{ 'error': errors.email }" required
+                        aria-describedby="email-error">
+                     <span class="error-message" x-show="errors.email" x-text="errors.email" id="email-error"></span>
+                  </div>
+
+                  <div class="form-group">
+                     <label for="phone">Phone Number *</label>
+                     <input type="tel" id="phone" x-model="form.phone" :class="{ 'error': errors.phone }" required
+                        aria-describedby="phone-error">
+                     <span class="error-message" x-show="errors.phone" x-text="errors.phone" id="phone-error"></span>
+                  </div>
+
+                  <div class="form-group">
+                     <label for="ticketType">Ticket Type *</label>
+                     <select id="ticketType" x-model="form.ticketType" :class="{ 'error': errors.ticketType }" required
+                        aria-describedby="ticketType-error">
+                        <option value="">Select ticket type</option>
+                        <option value="individual">Individual (3500 دج)</option>
+                        <option value="student">Student (2000 دج)</option>
+                        <option value="group">Group (150 دج per person)</option>
+                     </select>
+                     <span class="error-message" x-show="errors.ticketType" x-text="errors.ticketType"
+                        id="ticketType-error"></span>
+                  </div>
+
+                  <div class="form-group" x-show="form.ticketType === 'group'">
+                     <label for="groupSize">Group Size</label>
+                     <input type="number" id="groupSize" x-model="form.groupSize" min="5" max="20"
+                        placeholder="Minimum 5 people">
+                     <small>Groups must have at least 5 participants</small>
+                  </div>
+
+                  <div class="form-group" x-show="form.ticketType === 'student'">
+                     <label for="studentId">Student ID</label>
+                     <input type="text" id="studentId" x-model="form.studentId" placeholder="Valid student ID required">
+                     <small>Valid student ID required for student pricing</small>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-full" :disabled="isSubmitting">
+                     <span x-show="!isSubmitting">Register Now</span>
+                     <span x-show="isSubmitting">Processing...</span>
+                  </button>
+
+                  <!-- Success Message -->
+                  <div class="success-message" x-show="showSuccess" x-transition>
+                     <h4>Registration Successful! 🎉</h4>
+                     <p>Thank you for registering! You'll receive a confirmation email shortly.</p>
+                     <button class="btn btn-outline btn-small" @click="printConfirmation">Print Confirmation</button>
+                  </div>
+
+                  <!-- Confirmation Receipt -->
+                  <div class="confirmation-receipt" x-show="showConfirmation" id="confirmation-receipt">
+                     <div class="receipt-header">
+                        <img src="assets/img/binary_castle.png" alt="Binary Castle Logo" width="40" height="40">
+                        <div>
+                           <h3>Binary Castle</h3>
+                           <p>Empowering the next generation of developers</p>
+                        </div>
+                     </div>
+                     <div class="footer-links">
+                        <div class="footer-section">
+                           <h4>Bootcamp</h4>
+                           <a href="#about">About</a>
+                           <a href="#curriculum">Curriculum</a>
+                           <a href="#pricing">Pricing</a>
+                        </div>
+                        <div class="footer-section">
+                           <h4>Support</h4>
+                           <a href="mailto:info@binarycastle.dev">Contact Us</a>
+                           <a href="#faq">FAQ</a>
+                           <a href="#terms">Terms</a>
+                        </div>
+                        <div class="footer-section">
+                           <h4>Connect</h4>
+                           <a href="#">LinkedIn</a>
+                           <a href="#">GitHub</a>
+                           <a href="#">Twitter</a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="footer-bottom">
+                     <p>&copy; 2025 Binary Castle. All rights reserved.</p>
+                     <p>Built with passion for education and innovation.</p>
+                  </div>
+            </div>
+            </footer>
+
+            <!-- Scripts -->
+            <script src="assets/js/app.js"></script>
+</body>
+
+</html> Castle" width="50" height="50">
+<h3>Registration Confirmation</h3>
+</div>
+<div class="receipt-details">
+   <p><strong>Name:</strong> <span x-text="form.fullName"></span></p>
+   <p><strong>Email:</strong> <span x-text="form.email"></span></p>
+   <p><strong>Phone:</strong> <span x-text="form.phone"></span></p>
+   <p><strong>Ticket Type:</strong> <span x-text="form.ticketType"></span></p>
+   <p><strong>Registration Date:</strong> <span x-text="new Date().toLocaleDateString()"></span></p>
+   <p><strong>Confirmation ID:</strong> <span x-text="confirmationId"></span></p>
+</div>
+<div class="receipt-footer">
+   <p>Please bring this confirmation to the first day of bootcamp.</p>
+   <p>Contact: info@binarycastle.dev</p>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+   <div class="container">
+      <div class="footer-content">
+         <div class="footer-brand">
+            <img src="assets/img/binary_castle.png" alt="Binary
